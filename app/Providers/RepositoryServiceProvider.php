@@ -14,8 +14,6 @@ use App\Repositories\Eloquent\RoleRepository;
 use App\Repositories\Eloquent\UserRepository;
 use App\Repositories\Eloquent\SettingRepository;
 
-use App\Repositories\Interfaces\ICity;
-use App\Repositories\Eloquent\CityRepository;
 
 use App\Repositories\Interfaces\IIntroSlider;
 use App\Repositories\Eloquent\IntroSliderRepository;
@@ -34,6 +32,10 @@ use App\Repositories\Eloquent\IntroHowWorkRepository;
 use App\Repositories\Interfaces\IIntroSocial;
 use App\Repositories\Eloquent\IntroSocialRepository;
 
+use App\Repositories\Interfaces\ICity;
+use App\Repositories\Eloquent\CityRepository;
+use App\Repositories\Interfaces\INationality;
+use App\Repositories\Eloquent\NationalityRepository;
 #clases_Definition_here
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -45,7 +47,6 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {   
-        $this->app->bind(ICity::class  , CityRepository::class   );
         $this->app->bind(IIntroSlider::class  , IntroSliderRepository::class   );
         $this->app->bind(IIntroService::class  , IntroServiceRepository::class   );
         $this->app->bind(IIntroFqsCategory::class  , IntroFqsCategoryRepository::class   );
@@ -54,6 +55,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(IIntroMessages::class  , IntroMessagesRepository::class   );
         $this->app->bind(IIntroHowWork::class  , IntroHowWorkRepository::class   );
         $this->app->bind(IIntroSocial::class  , IntroSocialRepository::class   );
+        $this->app->bind(ICity::class  , CityRepository::class   );
+        $this->app->bind(INationality::class  , NationalityRepository::class   );
         #connect_here 
         $this->app->bind(ISeo::class                   , SeoRepository::class                  );
         $this->app->bind(IUser::class                  , UserRepository::class                 );

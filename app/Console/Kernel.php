@@ -13,8 +13,6 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\MakeStructure::class,
-        Commands\MakeRepo::class,
         Commands\MakeRepoModel::class,
         Commands\MakeFull::class,
     ];

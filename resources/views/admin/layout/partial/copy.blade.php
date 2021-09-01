@@ -201,7 +201,7 @@
  <!-- show model -->
 
 {{-- delete all model  --}}
-    <x-admin.delete-all route="{{route('admin.clients.deleteAll')}}" />
+    <x-admin.delete-all route="{{route('admin.copys.deleteAll')}}" />
 {{-- #delete all model  --}}
 
 @endsection

@@ -24,20 +24,19 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
     Route::get('login', 'AuthController@showLoginForm')->name('show.login');
     Route::post('login', 'AuthController@login')->name('login');
     Route::post('logout', 'AuthController@logout')->name('logout');
-    Route::post('getCities', 'CityController@getCities')->name('getCities');
 
 
 
     Route::group(['middleware' => ['admin', 'check-role','admin-lang']], function () {
 
         /*------------ start Of Dashboard----------*/
-        Route::get('dashboard', [
-            'uses'      => 'HomeController@dashboard',
-            'as'        => 'dashboard',
-            'icon'      => '<i class="la la-home"></i>',
-            'title'     => 'الرئيسيه',
-            'type'      => 'parent'
-        ]);
+            Route::get('dashboard', [
+                'uses'      => 'HomeController@dashboard',
+                'as'        => 'dashboard',
+                'icon'      => '<i class="la la-home"></i>',
+                'title'     => 'الرئيسيه',
+                'type'      => 'parent'
+            ]);
         /*------------ end Of dashboard ----------*/
         
         /*------------ start Of intro site  ----------*/
@@ -349,7 +348,85 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
             /*------------ end Of introhowworks ----------*/
             
         /*------------ end Of intro site ----------*/
-        
+
+        /*------------ start Of cities ----------*/
+            Route::get('cities', [
+                'uses'      => 'CityController@index',
+                'as'        => 'cities.index',
+                'title'     => 'المدن',
+                'icon'      => '<i class="la la-flag"></i>',
+                'type'      => 'parent',
+                'sub_route' => false,
+                'child'     => [ 'cities.store', 'cities.update', 'cities.delete'  ,'cities.deleteAll' ,]
+            ]);
+
+            # cities store
+            Route::post('cities/store', [
+                'uses'  => 'CityController@store',
+                'as'    => 'cities.store',
+                'title' => ' اضافة مدينة'
+            ]);
+
+            # cities update
+            Route::put('cities/{id}', [
+                'uses'  => 'CityController@update',
+                'as'    => 'cities.update',
+                'title' => 'تحديث مدينة'
+            ]);
+
+            # cities delete
+            Route::delete('cities/{id}', [
+                'uses'  => 'CityController@destroy',
+                'as'    => 'cities.delete',
+                'title' => 'حذف مدينة'
+            ]);
+            #delete all cities
+            Route::post('delete-all-cities', [
+                'uses'  => 'CityController@destroy',
+                'as'    => 'cities.deleteAll',
+                'title' => 'حذف مجموعه من المدن'
+            ]);
+        /*------------ end Of cities ----------*/
+
+        /*------------ start Of nationalities ----------*/
+            Route::get('nationalities', [
+                'uses'      => 'NationalityController@index',
+                'as'        => 'nationalities.index',
+                'title'     => 'الجنسيات',
+                'icon'      => '<i class="la la-files-o"></i>',
+                'type'      => 'parent',
+                'sub_route' => false,
+                'child'     => [ 'nationalities.store', 'nationalities.update', 'nationalities.delete'  ,'nationalities.deleteAll' ,]
+            ]);
+
+            # nationalities store
+            Route::post('nationalities/store', [
+                'uses'  => 'NationalityController@store',
+                'as'    => 'nationalities.store',
+                'title' => ' اضافة جنسية'
+            ]);
+
+            # nationalities update
+            Route::put('nationalities/{id}', [
+                'uses'  => 'NationalityController@update',
+                'as'    => 'nationalities.update',
+                'title' => 'تحديث جنسية'
+            ]);
+
+            # nationalities delete
+            Route::delete('nationalities/{id}', [
+                'uses'  => 'NationalityController@destroy',
+                'as'    => 'nationalities.delete',
+                'title' => 'حذف جنسية'
+            ]);
+            #delete all nationalities
+            Route::post('delete-all-nationalities', [
+                'uses'  => 'NationalityController@destroy',
+                'as'    => 'nationalities.deleteAll',
+                'title' => 'حذف مجموعه من الجنسيات'
+            ]);
+        /*------------ end Of nationalities ----------*/
+
         /*------------ start Of users Controller ----------*/
 
             Route::get('users', [
@@ -461,6 +538,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
                 ]);
             /************ #Clients ************/
         /*------------ end Of users Controller ----------*/
+
         /*------------ start Of seos ----------*/
              Route::get('seos', [
                  'uses'      => 'SeoController@index',
@@ -598,8 +676,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
                 'title' => 'ارسال ايميل'
             ]);
         /*------------ end Of Settings ----------*/
+        
 
         #new_routes_here
+                     
     });
 
 });

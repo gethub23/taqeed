@@ -22,5 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(IntroPartenerTableSeeder::class);
         $this->call(IntroHowWorkTableSeeder::class);
         $this->call(IntroSocialTableSeeder::class);
+        $this->call(CityTableSeeder::class);
+        $this->call(NationalityTableSeeder::class);
     }
 }

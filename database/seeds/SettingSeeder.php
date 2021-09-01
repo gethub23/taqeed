@@ -13,8 +13,8 @@ class SettingSeeder extends Seeder
     public function run()
     {
         $data = [
-                [ 'key' => 'name_ar'                        , 'value' => 'تعليمي'               ],
-                [ 'key' => 'name_en'                        , 'value' => 'Ta3lemy'              ],
+                [ 'key' => 'name_ar'                        , 'value' => 'تقييد'               ],
+                [ 'key' => 'name_en'                        , 'value' => 'Taqeed'              ],
                 [ 'key' => 'email'                          , 'value' => 'email@gmail.com'      ],
                 [ 'key' => 'phone'                          , 'value' => '+966555184424'        ],
                 [ 'key' => 'whatsapp'                       , 'value' => '+966555184424'        ],
@@ -31,8 +31,8 @@ class SettingSeeder extends Seeder
                 [ 'key' => 'intro_loader'                   , 'value' => 'intro_loader.png'       ],
                 [ 'key' => 'about_image_2'                  , 'value' => 'about_image_2.png'       ],
                 [ 'key' => 'about_image_1'                  , 'value' => 'about_image_1.png'       ],
-                [ 'key' => 'intro_name_ar'                  , 'value' => 'وقود الزهراني'    ],
-                [ 'key' => 'intro_name_en'                  , 'value' => 'Waqoud Elzahrany'    ],
+                [ 'key' => 'intro_name_ar'                  , 'value' => 'تقييد'    ],
+                [ 'key' => 'intro_name_en'                  , 'value' => 'Taqeed'    ],
                 [ 'key' => 'intro_meta_description'         , 'value' => 'Waqoud Elzahrany موقع وقود الزهراني للتعامل مع البنزينات باسعار قليلة جدا'    ],
                 [ 'key' => 'intro_meta_keywords'            , 'value' => 'Waqoud Elzahrany موقع وقود الزهراني للتعامل مع البنزينات باسعار قليلة جدا'    ],
                 [ 'key' => 'intro_about_ar'                 , 'value' => 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص أو العديد من النصوص الأخرى هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساح'    ],
