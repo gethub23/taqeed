@@ -20,6 +20,7 @@
                     <th>{{awtTrans('عرض مجموعة مديرين المحطة')}}</th>
                     <th>{{awtTrans('عرض انواع الوقود')}}</th>
                     <th>{{awtTrans('عرض الخزانات')}}</th>
+                    <th>{{awtTrans('عرض نقاط الوقود')}}</th>
                     <th>{{awtTrans('التحكم')}}</th>
                 </x-slot>
                 <x-slot name="tableBody">
@@ -37,6 +38,7 @@
                             <td><a href="{{url('admin/stationadmins/'.$row->id)}}">{{awtTrans('عرض')}}</a></td>
                             <td><a href="{{url('admin/fuels/'.$row->id)}}">{{awtTrans('عرض')}}</a></td>
                             <td><a href="{{url('admin/tanks/'.$row->id)}}">{{awtTrans('عرض')}}</a></td>
+                            <td><a href="{{url('admin/fuelpoints/'.$row->id)}}">{{awtTrans('عرض')}}</a></td>
                             <td>
                                 <x-admin.edit-button>
                                     <x-slot name="data">

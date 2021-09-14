@@ -440,6 +440,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
                                  'stationadmins.index',
                                  'tanks.index',
                                  'fuels.index',
+                                 'fuelpoints.index',
                                 ]
             ]);
 
@@ -469,6 +470,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
                 'as'    => 'stations.deleteAll',
                 'title' => 'حذف مجموعه من محطات البنزين'
             ]);
+
+            /*------------ start Of fuelpoints ----------*/
+                Route::get('fuelpoints/{id}', [
+                    'uses'      => 'FuelPointController@index',
+                    'as'        => 'fuelpoints.index',
+                    'title'     => 'نقاط الوقود',
+                ]);
+            /*------------ end Of fuelpoints ----------*/
 
              /*------------ start Of stationroles ----------*/
                 Route::get('stationroles/{id}', [
@@ -751,6 +760,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         /*------------ end Of Settings ----------*/
 
         #new_routes_here
+                     
                      
                      
     });
