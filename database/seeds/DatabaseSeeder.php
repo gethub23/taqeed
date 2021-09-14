@@ -24,5 +24,10 @@ class DatabaseSeeder extends Seeder
         $this->call(IntroSocialTableSeeder::class);
         $this->call(CityTableSeeder::class);
         $this->call(NationalityTableSeeder::class);
+        $this->call(StationTableSeeder::class);
+        $this->call(StationRoleTableSeeder::class);
+        $this->call(StationAdminTableSeeder::class);
+        $this->call(FuelTableSeeder::class);
+        $this->call(TankTableSeeder::class);
     }
 }

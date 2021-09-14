@@ -426,6 +426,79 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
                 'title' => 'حذف مجموعه من الجنسيات'
             ]);
         /*------------ end Of nationalities ----------*/
+        
+        /*------------ start Of stations ----------*/
+            Route::get('stations', [
+                'uses'      => 'StationController@index',
+                'as'        => 'stations.index',
+                'title'     => 'محطات البنزين',
+                'icon'      => '<i class="la la-image"></i>',
+                'type'      => 'parent',
+                'sub_route' => false,
+                'child'     => [ 'stations.store', 'stations.update', 'stations.delete'  ,'stations.deleteAll' ,
+                                 'stationroles.index',
+                                 'stationadmins.index',
+                                 'tanks.index',
+                                 'fuels.index',
+                                ]
+            ]);
+
+            # stations store
+            Route::post('stations/store', [
+                'uses'  => 'StationController@store',
+                'as'    => 'stations.store',
+                'title' => ' اضافة محطة'
+            ]);
+
+            # stations update
+            Route::put('stations/{id}', [
+                'uses'  => 'StationController@update',
+                'as'    => 'stations.update',
+                'title' => 'تحديث محطة'
+            ]);
+
+            # stations delete
+            Route::delete('stations/{id}', [
+                'uses'  => 'StationController@destroy',
+                'as'    => 'stations.delete',
+                'title' => 'حذف محطة'
+            ]);
+            #delete all stations
+            Route::post('delete-all-stations', [
+                'uses'  => 'StationController@destroy',
+                'as'    => 'stations.deleteAll',
+                'title' => 'حذف مجموعه من محطات البنزين'
+            ]);
+
+             /*------------ start Of stationroles ----------*/
+                Route::get('stationroles/{id}', [
+                    'uses'      => 'StationRoleController@index',
+                    'as'        => 'stationroles.index',
+                    'title'     => 'صلاحيات البنزينات',
+                ]);
+            /*------------ end Of stationroles ----------*/
+            /*------------ start Of stationadmins ----------*/
+                Route::get('stationadmins/{id}', [
+                    'uses'      => 'StationAdminController@index',
+                    'as'        => 'stationadmins.index',
+                    'title'     => 'مديرين المحطات',
+                ]);
+            /*------------ end Of stationadmins ----------*/
+            /*------------ start Of tanks ----------*/
+                Route::get('tanks/{id}', [
+                    'uses'      => 'TankController@index',
+                    'as'        => 'tanks.index',
+                    'title'     => 'الخزانات',
+                ]);
+            /*------------ end Of tanks ----------*/
+            /*------------ start Of fuels ----------*/
+                Route::get('fuels/{id}', [
+                    'uses'      => 'FuelController@index',
+                    'as'        => 'fuels.index',
+                    'title'     => 'الوقود',
+                ]);
+            /*------------ end Of fuels ----------*/
+        /*------------ end Of stations ----------*/
 
         /*------------ start Of users Controller ----------*/
 
@@ -676,9 +749,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
                 'title' => 'ارسال ايميل'
             ]);
         /*------------ end Of Settings ----------*/
-        
 
         #new_routes_here
+                     
                      
     });
 

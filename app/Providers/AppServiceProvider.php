@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use App\Models\User;
 
+use App\Models\Station;
 use App\Models\IntroSlider;
 use App\Models\IntroHowWork;
 use App\Observers\UserObserver;
 use App\Observers\IntroObserver;
+use App\Observers\StationObserver;
 use App\Observers\IntroSliderObserver;
 use App\Observers\IntroHowWorkObserver;
 use Illuminate\Support\ServiceProvider;
@@ -34,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
         // Intro          ::observe(IntroObserver::class);
         IntroHowWork   ::observe(IntroHowWorkObserver::class);
         IntroSlider    ::observe(IntroSliderObserver::class);
+        Station    ::observe(StationObserver::class);
          view()->composer('*', function ($view) 
             {
                 
