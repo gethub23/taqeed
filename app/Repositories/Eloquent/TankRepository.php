@@ -11,4 +11,10 @@ class TankRepository extends AbstractModelRepository implements ITank
     {
         parent::__construct($model);
     }
+
+    public function activeTanks($station_id)
+    {
+        return $this->model->where(['status' => 'active' , 'station_id' => $station_id])->orderBy('current_capacity' , 'ASC')->get()->unique('fuel_id'); 
+        
+    }
 }

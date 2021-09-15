@@ -47,7 +47,14 @@ Route::group(['prefix'                  => 'v1'  , 'namespace' => 'Api\V1']  , f
                 Route::post('activate'           ,'AuthController@activate')                      ;
                 //  profile
                 Route::post('profile'            ,'AuthController@profile')                       ;
+                // tanks 
+                Route::get('tanks'               ,'TankController@tanks')                       ;
+                // fuel Points 
+                Route::get('fuel-points/{id}'    ,'FuelPointController@fuelPoints')                       ;
+                
             });
+
+
         // auth routes 
     });
 
