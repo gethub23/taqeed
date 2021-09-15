@@ -6,10 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 use App\Traits\Responses;
 use Illuminate\Contracts\Validation\Validator;
 
-const VALIDATION_RULES = [
-    'password'        => 'required',
-];
-
 class ResetPasswordRequest extends FormRequest
 {
     use Responses;
@@ -32,8 +28,9 @@ class ResetPasswordRequest extends FormRequest
 
     public function rules()
     {
-        $rules =  VALIDATION_RULES;
-        return $rules;
+        return [
+            'password'        => 'required',
+        ];
     }
 
     protected function failedValidation(Validator $validator)

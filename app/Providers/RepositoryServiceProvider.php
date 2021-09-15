@@ -50,6 +50,10 @@ use App\Repositories\Interfaces\IFuelPoint;
 use App\Repositories\Eloquent\FuelPointRepository;
 use App\Repositories\Interfaces\IStationWorker;
 use App\Repositories\Eloquent\StationWorkerRepository;
+use App\Repositories\Interfaces\IWorkerToken;
+use App\Repositories\Eloquent\WorkerTokenRepository;
+use App\Repositories\Interfaces\IWorkerUpdate;
+use App\Repositories\Eloquent\WorkerUpdateRepository;
 #clases_Definition_here
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -78,6 +82,8 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(IFuel::class  , FuelRepository::class   );
         $this->app->bind(IFuelPoint::class  , FuelPointRepository::class   );
         $this->app->bind(IStationWorker::class  , StationWorkerRepository::class   );
+        $this->app->bind(IWorkerToken::class  , WorkerTokenRepository::class   );
+        $this->app->bind(IWorkerUpdate::class  , WorkerUpdateRepository::class   );
         #connect_here 
         $this->app->bind(ISeo::class                   , SeoRepository::class                  );
         $this->app->bind(IUser::class                  , UserRepository::class                 );

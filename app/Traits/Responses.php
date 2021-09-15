@@ -8,9 +8,9 @@ trait  Responses
 
     public  function validationResponse($validator){
         $response = [
-            'success'   => false,
+            'success'   => 'fail',
             'message'   => $validator->errors()->first(),
-            'data'      => null,
+            'data'      => [],
             'extra'     => [],
         ];
         throw new HttpResponseException(response()->json( $response , 200));
@@ -21,7 +21,11 @@ trait  Responses
             'success'  => true,
             'message'  => $message,
             'data'     => $result,
-            'extra'    => auth()->user() != null ? auth()-> user()->block : 0,
+            'extra'    => [
+                'block'  => auth()->check() && auth()->user()->block  == 1 ? true : false ,
+                'active' => auth()->check() && auth()->user()->active == 1 ? true : false ,
+                'extra'  => $extraData
+            ],
             'pages'    => $extraData,
         ];
         throw new HttpResponseException(response()->json( $response , 200));
@@ -32,7 +36,11 @@ trait  Responses
             'success'  => false,
             'message'  => $message,
             'data'     => $result,
-            'extra'    => auth()->user() != null ? auth()-> user()->block : '',
+            'extra'    => [
+                'block'  => auth()->check() && auth()->user()->block  == 1 ? true : false ,
+                'active' => auth()->check() && auth()->user()->active == 1 ? true : false ,
+                'extra'  => $extraData
+            ],
         ];
         throw new HttpResponseException(response()->json( $response , 200));
     }
@@ -48,6 +56,25 @@ trait  Responses
                 'total_pages'   => $col -> lastPage()           ??'',
             ];
             return $data;
+    }
+
+    /**
+     * keys : success, fail, needActive, exit, blocked
+     */
+    function response($key, $message , $data = [], $extra = [] , $page = false )
+    {
+        $response = [
+            'key'            => $key,
+            'message'        => $message,
+            'data'           => $data,
+            'pagination'     => $page != false ?  $this->paginationModel($data) : false, 
+            'extra'          => [
+                        'block'  => auth()->check() && auth()->user()->block  == 1 ? true : false ,
+                        'active' => auth()->check() && auth()->user()->active == 1 ? true : false ,
+                        'extra'  => $extra
+            ],
+        ];
+        throw new HttpResponseException(response()->json( $response , 200));
     }
 }
 

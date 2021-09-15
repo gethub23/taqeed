@@ -21,8 +21,7 @@ class CreateStationWorkersTable extends Migration
             $table->string('identity')->nullable();
             $table->string('password')->nullable();
             $table->string('work_time')->nullable();
-            $table->integer('code')->nullable();
-            $table->dateTime('code_expire')->nullable();
+            $table->longText('token')->nullable();
             $table->boolean('active')->default(false);
             $table->boolean('ban')->default(false);
             $table->enum('type', ['worker', 'supervisor'])->nullable()->default('worker');

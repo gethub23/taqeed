@@ -83,7 +83,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Station::class,
         ],
-        'workers' => [
+        'station_workers' => [
             'driver' => 'eloquent',
             'model' => App\Models\StationWorker::class,
         ],

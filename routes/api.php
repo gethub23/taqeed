@@ -20,7 +20,6 @@ Route::group(['prefix'                  => 'v1'  , 'namespace' => 'Api\V1']  , f
     Route::group(['middleware'          => ['localization']]                 , function (){
         // public routes 
             // auth controller
-            Route::post('sign-up'                ,'AuthController@signUp')                         ;
             Route::post('sign-in'                ,'AuthController@signIn')                         ;
             // forget password send code
             Route::post('forget-password'        ,'AuthController@forgetPassword')                 ;
@@ -37,7 +36,11 @@ Route::group(['prefix'                  => 'v1'  , 'namespace' => 'Api\V1']  , f
                 // logout
                 Route::post('logout'             , 'AuthController@Logout'                 );
                 //  reset password
-                Route::post('reset-password'     ,'AuthController@resetPassword')                 ;
+                Route::post('reset-password/{id}','AuthController@resetPassword')                 ;
+                //  resend code
+                Route::get('resend-code'         ,'AuthController@resendcode')                    ;
+                //  reset password
+                Route::post('check-change-password-code' ,'AuthController@checkChangePasswordCode')                 ;
                 //  resend activation code
                 Route::post('resendCode'         ,'AuthController@resendCode')                    ;
                 //  activate user account

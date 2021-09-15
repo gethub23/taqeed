@@ -18,6 +18,7 @@ class StationWorker extends Authenticatable implements JWTSubject
     protected $hidden       = [
         'password',
     ];
+
     
     public function getJWTIdentifier()
     {
@@ -28,12 +29,17 @@ class StationWorker extends Authenticatable implements JWTSubject
         return [];
     }
 
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['avatar' , 'name','phone' ,'password' , 'identity' , 'work_time' , 'code' , 'code_expire' , 'active' , 'ban' , 'type' , 'station_id' , 'city_id' , 'nationality_id'];
+    protected $fillable = ['avatar' , 'name','phone' ,'password' , 'identity' , 'work_time' , 'code' , 'code_expire' , 'active' , 'ban' , 'type' , 'station_id' , 'city_id' , 'nationality_id' , 'token'];
     
     public function getAvatarAttribute($value)
     {
@@ -68,4 +74,33 @@ class StationWorker extends Authenticatable implements JWTSubject
         return $this->belongsTo(Nationality::class, 'nationality_id', 'id');
     }
 
+    /**
+     * Get the station that owns the StationWorker
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function station()
+    {
+        return $this->belongsTo(Station::class, 'station_id', 'id');
+    }
+
+    /**
+     * Get all of the WorkerToken for the StationWorker
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function tokens()
+    {
+        return $this->hasMany(WorkerToken::class, 'station_worker_id', 'id');
+    }
+
+    /**
+     * Get all of the updates for the StationWorker
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function updates()
+    {
+        return $this->hasMany(WorkerUpdate::class, 'station_worker_id', 'id');
+    }
 }

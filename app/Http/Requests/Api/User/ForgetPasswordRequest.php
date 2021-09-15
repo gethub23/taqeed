@@ -6,11 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 use App\Traits\Responses;
 use Illuminate\Contracts\Validation\Validator;
 
-const VALIDATION_RULES = [
-    'key'             => 'required|exists:countries,key',
-    'phone'           => 'required|exists:users,phone',
-];
-
 class ForgetPasswordRequest extends FormRequest
 {
     use Responses;
@@ -33,8 +28,9 @@ class ForgetPasswordRequest extends FormRequest
 
     public function rules()
     {
-        $rules =  VALIDATION_RULES;
-        return $rules;
+        return [
+            'phone'   => 'required|exists:station_workers,phone|min:10',
+        ];
     }
 
     protected function failedValidation(Validator $validator)
