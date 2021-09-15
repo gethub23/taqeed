@@ -441,6 +441,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
                                  'tanks.index',
                                  'fuels.index',
                                  'fuelpoints.index',
+                                 'stationworkers.index',
                                 ]
             ]);
 
@@ -507,6 +508,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
                     'title'     => 'الوقود',
                 ]);
             /*------------ end Of fuels ----------*/
+            
+            /*------------ start Of stationworkers ----------*/
+                Route::get('stationworkers/{id}', [
+                    'uses'      => 'StationWorkerController@index',
+                    'as'        => 'stationworkers.index',
+                    'title'     => 'عمال البنزينه',
+                ]);
+            /*------------ end Of stationworkers ----------*/
         /*------------ end Of stations ----------*/
 
         /*------------ start Of users Controller ----------*/
@@ -758,8 +767,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
                 'title' => 'ارسال ايميل'
             ]);
         /*------------ end Of Settings ----------*/
-
         #new_routes_here
+                     
                      
                      
                      

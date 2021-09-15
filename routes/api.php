@@ -16,19 +16,24 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['prefix'                  => 'v1'  , 'namespace' => 'Api\V1']  , function () {
+
     Route::group(['middleware'          => ['localization']]                 , function (){
-        #auth controller
-        Route::post('sign-up'                ,'AuthController@signUp')                         ;
-        Route::post('sign-in'                ,'AuthController@signIn')                         ;
-        // forget password send code
-        Route::post('forget-password'        ,'AuthController@forgetPassword')                 ;
+        // public routes 
+            // auth controller
+            Route::post('sign-up'                ,'AuthController@signUp')                         ;
+            Route::post('sign-in'                ,'AuthController@signIn')                         ;
+            // forget password send code
+            Route::post('forget-password'        ,'AuthController@forgetPassword')                 ;
+        // public routes 
 
+        // optional auth routes 
+            Route::group(['middleware'           => ['jwtOptional']], function (){
+            
+            });
+        // optional auth routes 
 
-        Route::group(['middleware'           => ['jwtOptional','localization']], function (){
-           
-        });
-
-        Route::group(['middleware'               => ['jwt']]             , function (){
+        // auth routes 
+            Route::group(['middleware'               => ['jwt']]             , function (){
                 // logout
                 Route::post('logout'             , 'AuthController@Logout'                 );
                 //  reset password
@@ -39,8 +44,8 @@ Route::group(['prefix'                  => 'v1'  , 'namespace' => 'Api\V1']  , f
                 Route::post('activate'           ,'AuthController@activate')                      ;
                 //  profile
                 Route::post('profile'            ,'AuthController@profile')                       ;
-        });
-
+            });
+        // auth routes 
     });
 
  });

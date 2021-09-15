@@ -30,5 +30,6 @@ class DatabaseSeeder extends Seeder
         $this->call(FuelTableSeeder::class);
         $this->call(TankTableSeeder::class);
         $this->call(FuelPointTableSeeder::class);
+        $this->call(StationWorkerTableSeeder::class);
     }
 }

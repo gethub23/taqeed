@@ -24,8 +24,6 @@ class AuthController extends Controller
 
             session() -> put( 'lang', 'ar' );
         }
-
-//        dd(session( 'lang' ));
         return back();
     }
 
