@@ -19,6 +19,6 @@ return [
     /*
      * default locale for translation if you did not use app locale
      */
-    'default_locale' => 'en'
+    'default_locale' => 'ar'
 
 ];

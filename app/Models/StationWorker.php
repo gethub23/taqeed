@@ -4,10 +4,30 @@ namespace App\Models;
 
 use App\Traits\UploadTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class StationWorker extends Model
+class StationWorker extends Authenticatable implements JWTSubject
 {
+    use Notifiable;
     use UploadTrait;
+
+    protected $guarded      = ['id'];
+
+    protected $hidden       = [
+        'password',
+    ];
+    
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
+
     /**
      * The attributes that are mass assignable.
      *

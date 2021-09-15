@@ -40,7 +40,15 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
+        'station' => [
+            'driver' => 'session',
+            'provider' => 'stations',
+        ],
+        'worker' => [
+            'driver'   => 'jwt',
+            'provider' => 'station_workers',
+            'hash' => false,
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -71,10 +79,14 @@ return [
             'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'stations' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Station::class,
+        ],
+        'workers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\StationWorker::class,
+        ],
     ],
 
     /*

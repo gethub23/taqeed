@@ -768,10 +768,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
             ]);
         /*------------ end Of Settings ----------*/
         #new_routes_here
-                     
-                     
-                     
-                     
+        
     });
 
 });
