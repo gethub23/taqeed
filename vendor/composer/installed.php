@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '8c9e77f0a8cd5e6f15d6f969c18d87e43dc4d7b6',
+    'reference' => 'd77d3b12e11df768ce320e8b176e6c14e1ee3eb8',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -450,7 +450,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '8c9e77f0a8cd5e6f15d6f969c18d87e43dc4d7b6',
+      'reference' => 'd77d3b12e11df768ce320e8b176e6c14e1ee3eb8',
     ),
     'laravel/tinker' => 
     array (
@@ -544,12 +544,12 @@
     ),
     'monolog/monolog' => 
     array (
-      'pretty_version' => '2.3.3',
-      'version' => '2.3.3.0',
+      'pretty_version' => '2.3.4',
+      'version' => '2.3.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '3962ebfe206ac7ce6c754c79e2fee0c64bf1818d',
+      'reference' => '437e7a1c50044b92773b361af77620efb76fff59',
     ),
     'myclabs/deep-copy' => 
     array (
@@ -788,7 +788,7 @@
       'provided' => 
       array (
         0 => '1.0|2.0',
-        1 => '1.0.0 || 2.0.0',
+        1 => '1.0.0 || 2.0.0 || 3.0.0',
       ),
     ),
     'psr/simple-cache' => 

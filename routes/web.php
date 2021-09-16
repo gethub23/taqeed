@@ -767,7 +767,47 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
                 'title' => 'ارسال ايميل'
             ]);
         /*------------ end Of Settings ----------*/
+        
+        /*------------ start Of shifts ----------*/
+            Route::get('shifts', [
+                'uses'      => 'ShiftController@index',
+                'as'        => 'shifts.index',
+                'title'     => 'شيفتات',
+                'icon'      => '<i class="la la-image"></i>',
+                'type'      => 'parent',
+                'sub_route' => false,
+                'child'     => [ 'shifts.store', 'shifts.update', 'shifts.delete'  ,'shifts.deleteAll' ,]
+            ]);
+
+            # shifts store
+            Route::post('shifts/store', [
+                'uses'  => 'ShiftController@store',
+                'as'    => 'shifts.store',
+                'title' => ' اضافة شيفت'
+            ]);
+
+            # shifts update
+            Route::put('shifts/{id}', [
+                'uses'  => 'ShiftController@update',
+                'as'    => 'shifts.update',
+                'title' => 'تحديث شيفت'
+            ]);
+
+            # shifts delete
+            Route::delete('shifts/{id}', [
+                'uses'  => 'ShiftController@destroy',
+                'as'    => 'shifts.delete',
+                'title' => 'حذف شيفت'
+            ]);
+            #delete all shifts
+            Route::post('delete-all-shifts', [
+                'uses'  => 'ShiftController@destroy',
+                'as'    => 'shifts.deleteAll',
+                'title' => 'حذف مجموعه من شيفتات'
+            ]);
+        /*------------ end Of shifts ----------*/
         #new_routes_here
+                     
         
     });
 

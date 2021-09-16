@@ -22,7 +22,7 @@ class FuelPointController extends Controller
 
     public function fuelPoints($fuel_id)
     {
-       $points =  $this->point->where(['station_id' => auth('worker')->user()->station_id  , 'fuel_id' => $fuel_id ]) ; 
-       $this->response('success' ,'' , PointsResource::collection($points));
+       $points =  $this->point->where(['fuel_id' => $fuel_id ]) ; 
+       $this->response('success' , '' , PointsResource::collection($points));
     }
 }

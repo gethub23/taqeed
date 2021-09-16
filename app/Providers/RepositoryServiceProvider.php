@@ -54,6 +54,8 @@ use App\Repositories\Interfaces\IWorkerToken;
 use App\Repositories\Eloquent\WorkerTokenRepository;
 use App\Repositories\Interfaces\IWorkerUpdate;
 use App\Repositories\Eloquent\WorkerUpdateRepository;
+use App\Repositories\Interfaces\IShift;
+use App\Repositories\Eloquent\ShiftRepository;
 #clases_Definition_here
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -84,6 +86,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(IStationWorker::class  , StationWorkerRepository::class   );
         $this->app->bind(IWorkerToken::class  , WorkerTokenRepository::class   );
         $this->app->bind(IWorkerUpdate::class  , WorkerUpdateRepository::class   );
+        $this->app->bind(IShift::class  , ShiftRepository::class   );
         #connect_here 
         $this->app->bind(ISeo::class                   , SeoRepository::class                  );
         $this->app->bind(IUser::class                  , UserRepository::class                 );

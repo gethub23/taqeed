@@ -20,9 +20,9 @@ Route::group(['prefix'                  => 'v1'  , 'namespace' => 'Api\V1']  , f
     Route::group(['middleware'          => ['localization']]                 , function (){
         // public routes 
             // auth controller
-            Route::post('sign-in'                ,'AuthController@signIn')                         ;
+            Route::post('sign-in'                ,'AuthController@signIn'                                   );
             // forget password send code
-            Route::post('forget-password'        ,'AuthController@forgetPassword')                 ;
+            Route::post('forget-password'        ,'AuthController@forgetPassword'                           );
         // public routes 
 
         // optional auth routes 
@@ -34,24 +34,31 @@ Route::group(['prefix'                  => 'v1'  , 'namespace' => 'Api\V1']  , f
         // auth routes 
             Route::group(['middleware'               => ['jwt']]             , function (){
                 // logout
-                Route::post('logout'             , 'AuthController@Logout'                 );
+                Route::post('logout'             , 'AuthController@Logout'                                  );
                 //  reset password
-                Route::post('reset-password/{id}','AuthController@resetPassword')                 ;
+                Route::post('reset-password/{id}','AuthController@resetPassword'                            );
                 //  resend code
-                Route::get('resend-code'         ,'AuthController@resendcode')                    ;
+                Route::get('resend-code'         ,'AuthController@resendcode'                               );
                 //  reset password
-                Route::post('check-change-password-code' ,'AuthController@checkChangePasswordCode')                 ;
+                Route::post('check-change-password-code' ,'AuthController@checkChangePasswordCode'          );
                 //  resend activation code
-                Route::post('resendCode'         ,'AuthController@resendCode')                    ;
+                Route::post('resendCode'         ,'AuthController@resendCode'                               );
                 //  activate user account
-                Route::post('activate'           ,'AuthController@activate')                      ;
+                Route::post('activate'           ,'AuthController@activate'                                 );
                 //  profile
-                Route::post('profile'            ,'AuthController@profile')                       ;
+                Route::post('profile'            ,'AuthController@profile'                                  );
                 // tanks 
-                Route::get('tanks'               ,'TankController@tanks')                       ;
+                Route::get('tanks'               ,'TankController@tanks'                                    );
                 // fuel Points 
-                Route::get('fuel-points/{id}'    ,'FuelPointController@fuelPoints')                       ;
-                
+                Route::get('fuel-points/{id}'    ,'FuelPointController@fuelPoints'                          );
+
+                // only worker can do this actions **worker midelware**
+                Route::group(['middleware'          => ['worker']]                 , function (){
+                    // open new shift 
+                    Route::post('open-shift'     ,'ShiftController@openShift'                               );
+                    
+                });
+                // only worker can do this actions **worker midelware**
             });
 
 
